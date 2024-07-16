@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="buttons">#86C0EA</color>
+    <color name="background">#F3E1D4</color>
+    <color name="rectangle">#AED193</color>
+    <color name="brownNavSelector">#8F8165</color>
+    <color name="brownBackgroundNav">#B6A78C</color>
+    <color name="brownNavButton">#97886B</color>
+    <color name="greyPlaceHolder">#ACACAC</color>
+    <color name="greySubtitle">#494949</color>
 </resources>
