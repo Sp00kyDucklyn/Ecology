@@ -84,4 +84,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="1.0"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:text="Prueba Camera" />
+
 </LinearLayout>
