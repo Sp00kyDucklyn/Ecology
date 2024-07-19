@@ -4,4 +4,14 @@
     <string name="etiquete">Etiquete</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="floatingactionbutton">popo</string>
+    <string name="add">add</string>
+    <string name="titleProject">Project</string>
+    <string name="place">Lugar n</string>
+    <string name="album">Álbumes</string>
+    <string name="albumName">Album n</string>
+    <string name="welcome">Hola, n!</string>
+    <string name="project">Proyectos</string>
+    <string name="text">Aquí podrás ver todas las etiquetas que tienes para seleccionar :)</string>
+    <string name="welcomeEtiquete">Bienvenido a las etiquetas!</string>
 </resources>
