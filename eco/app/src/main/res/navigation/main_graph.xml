@@ -22,6 +22,7 @@
         <action
             android:id="@+id/action_homeFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/etiquetesFragment"
@@ -52,6 +53,9 @@
         <action
             android:id="@+id/action_addFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="project"
+            app:argType="com.cursokotlin.eco.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -61,12 +65,6 @@
         <action
             android:id="@+id/action_settingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_etiquetesFragment"
-            app:destination="@id/etiquetesFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_addFragment"
-            app:destination="@id/addFragment" />
     </fragment>
     <fragment
         android:id="@+id/projectFragment"
@@ -79,6 +77,9 @@
         <action
             android:id="@+id/action_projectFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_projectFragment_to_editFragment"
+            app:destination="@id/editFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
@@ -89,4 +90,9 @@
             android:id="@+id/action_albumFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.cursokotlin.eco.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
 </navigation>

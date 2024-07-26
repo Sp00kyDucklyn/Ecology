@@ -4,21 +4,36 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.cursokotlin.eco.adapter.ProjectAdapter
+import com.cursokotlin.eco.databinding.FragmentHomeBinding
+import com.cursokotlin.eco.model.Project
+import com.cursokotlin.eco.viewmodel.ProjectViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, MenuProvider {
 
-    private lateinit var recv: RecyclerView
+
+    private var homeBinding: FragmentHomeBinding? = null
+    private val binding get() = homeBinding!!
+
+    private lateinit var projectViewModel: ProjectViewModel
+    private lateinit var projectAdapter: ProjectAdapter
     private lateinit var btnOpenCameraActivity: Button
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,15 +47,86 @@ class HomeFragment : Fragment() {
 
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        homeBinding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        btnOpenCameraActivity = root.findViewById(R.id.button)
+        //btnOpenCameraActivity = binding.root.findViewById(R.id.button)
 
-        btnOpenCameraActivity.setOnClickListener {
-            val intent = Intent(activity, FotografiaActivity::class.java)
-            startActivity(intent)
+       // btnOpenCameraActivity.setOnClickListener {
+         //   val intent = Intent(activity, FotografiaActivity::class.java)
+           // startActivity(intent)
+       // }
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        projectViewModel = (activity as MainActivity).projectViewModel
+        setUpHomeRecyclerView()
+
+    }
+
+    private fun setUpHomeRecyclerView() {
+
+      projectAdapter = ProjectAdapter()
+        binding.homeRecyclerView.apply {
+            layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+            setHasFixedSize(true)
+            adapter = projectAdapter
         }
-        return root
+
+        activity?.let {
+            projectViewModel.getAllProjects().observe(viewLifecycleOwner){project ->
+                projectAdapter.differ.submitList(project)
+                updateUI(project)
+            }
+        }
+    }
+
+    private fun updateUI(project: List<Project>?) {
+        if(project !=null){
+            if(project.isNotEmpty()){
+                binding.homeRecyclerView.visibility = View.VISIBLE
+            }else{
+                binding.homeRecyclerView.visibility = View.GONE
+            }
+        }
+
+    }
+
+    private fun searchProject(query: String?){
+        val searchQuery = "%$query"
+
+        projectViewModel.searchProjects(searchQuery).observe(this){list ->
+           projectAdapter.differ.submitList(list)
+        }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText != null){
+            searchProject(newText)
+        }
+        return true
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        val menuSearch = menu.findItem(R.id.searchView).actionView as SearchView
+        menuSearch.isSubmitButtonEnabled = false
+        menuSearch.setOnQueryTextListener(this)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        homeBinding = null
     }
 
 }
