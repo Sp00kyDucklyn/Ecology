@@ -12,5 +12,4 @@ data class Album (
     val id: Int,
     val albumTitle: String,
     val albumCoords: String
-
 ): Parcelable

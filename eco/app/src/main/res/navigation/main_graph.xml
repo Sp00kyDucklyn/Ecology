@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
+        <argument
+            android:name="projectName"
+            app:argType="string" />
 
     </fragment>
     <fragment
@@ -80,6 +83,12 @@
         <action
             android:id="@+id/action_projectFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_projectFragment_to_addAlbum"
+            app:destination="@id/addAlbum" />
+        <argument
+            android:name="project"
+            app:argType="com.cursokotlin.eco.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
@@ -89,10 +98,25 @@
         <action
             android:id="@+id/action_albumFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
+        <argument
+            android:name="album"
+            app:argType="com.cursokotlin.eco.model.Album" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.cursokotlin.eco.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/addAlbum"
+        android:name="com.cursokotlin.eco.AddAlbum"
+        android:label="fragment_add_album"
+        tools:layout="@layout/fragment_add_album" >
+        <action
+            android:id="@+id/action_addAlbum_to_projectFragment"
+            app:destination="@id/projectFragment" />
+        <argument
+            android:name="album"
+            app:argType="com.cursokotlin.eco.model.Album" />
+    </fragment>
 </navigation>

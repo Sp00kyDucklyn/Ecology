@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cursokotlin.eco.HomeFragment
 import com.cursokotlin.eco.HomeFragmentDirections
+import com.cursokotlin.eco.ProjectFragmentDirections
 import com.cursokotlin.eco.databinding.ItemAlbumBinding
 import com.cursokotlin.eco.model.Album
 
@@ -47,7 +48,8 @@ class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
         holder.itemBinding.albumTitle.text = currentAlbum.albumTitle
 
         holder.itemView.setOnClickListener{
-            val directions = HomeFragmentDirections.actionHomeFragmentToProjectFragment()
+            val directions = ProjectFragmentDirections.actionProjectFragmentToAlbumFragment(currentAlbum)
+            it.findNavController().navigate(directions)
         }
     }
 

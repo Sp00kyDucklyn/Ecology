@@ -5,28 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.cursokotlin.eco.databinding.FragmentAlbumBinding
+import com.cursokotlin.eco.databinding.FragmentProjectBinding
+import com.cursokotlin.eco.viewmodel.AlbumViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AlbumFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AlbumFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var albumBinding: FragmentAlbumBinding? = null
+    private val binding get() = albumBinding!!
+
+    private lateinit var albumViewModel: AlbumViewModel
+    private lateinit var albumView: View
+
+
+    private val args: AlbumFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -34,26 +30,30 @@ class AlbumFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_album, container, false)
+        albumBinding =  FragmentAlbumBinding.inflate(inflater, container, false)
+       return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AlbumFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AlbumFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        albumViewModel = (activity as MainActivity).albumViewModel
+        //setUpAlbumRecyclerView()
+        val albumName = args.album.albumTitle
+        val albumNameTextView = binding.albumLbl
+        albumNameTextView.text = albumName
+
+
+        binding.beforeBtn.setOnClickListener{
+            //view.findNavController().popBackStack(R.id.projectFragment,false)
+           // val directions = AlbumFragmentDirections.actionAlbumFragmentToProjectFragment(albumName)
+           // it.findNavController().navigate(directions)
+        }
+
+        //currentNote = args.note!!
+        albumView = view
     }
+
+
 }

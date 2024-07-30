@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".AddFragment"
-        android:padding="12dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddAlbum"
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/addNoteHeading"
@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins"
-        android:text="Add Project."
+        android:text="Add Album."
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -46,5 +46,5 @@
         android:fontFamily="@font/poppins"
         android:layout_below="@id/addNoteTitle"
         android:layout_marginTop="12dp" />
-    </RelativeLayout>
+</RelativeLayout>
 </layout>

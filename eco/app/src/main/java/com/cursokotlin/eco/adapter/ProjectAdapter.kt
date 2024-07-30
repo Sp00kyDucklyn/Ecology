@@ -57,7 +57,7 @@ class ProjectAdapter: RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder>(){
         holder.itemBinding.projectDesc.text = currentProject.projectDesc
 
         holder.itemView.setOnClickListener{
-            val direction = HomeFragmentDirections.actionHomeFragmentToProjectFragment()
+            val direction = HomeFragmentDirections.actionHomeFragmentToProjectFragment(currentProject)
             it.findNavController().navigate(direction)
         }
     }
