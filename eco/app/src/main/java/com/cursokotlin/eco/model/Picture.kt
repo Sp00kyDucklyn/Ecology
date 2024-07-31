@@ -6,20 +6,22 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "etiquetes",
+
+@Entity(tableName = "pictures",
     foreignKeys = [
         ForeignKey(
-            entity = Picture::class,
+            entity = Album::class,
             parentColumns = ["id"],
-            childColumns = ["picturesId"],
+            childColumns = ["albumId"],
             onDelete = ForeignKey.CASCADE
         )
     ])
 @Parcelize
-data class Etiquete (
+data class Picture(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val picturesId: Int,
-    val etiquetenName: String
+    val albumId: Int,
+    val pictureTitle: String,
+    val path: String
 
 ): Parcelable

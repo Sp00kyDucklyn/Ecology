@@ -65,8 +65,11 @@ class ProjectFragment : Fragment(R.layout.fragment_project) {
         projectNameTextView.text = projectName
 
 
+
         binding.photoBtn.setOnClickListener{
-            it.findNavController().navigate(R.id.action_projectFragment_to_addAlbum)
+            val action =ProjectFragmentDirections.actionProjectFragmentToAddAlbum(args.project)
+            it.findNavController().navigate(action)
+           // it.findNavController().navigate(R.id.action_projectFragment_to_addAlbum)
         }
         //currentNote = args.note!!
 
@@ -77,7 +80,8 @@ class ProjectFragment : Fragment(R.layout.fragment_project) {
 
     private fun setUpAlbumRecyclerView() {
         print("popo entro a este metodo")
-        albumAdapter = AlbumAdapter()
+        val project = args.project 
+        albumAdapter = AlbumAdapter(project)
         binding.mRecycler.apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             setHasFixedSize(true)
@@ -85,11 +89,12 @@ class ProjectFragment : Fragment(R.layout.fragment_project) {
         }
 
         activity?.let {
-            albumViewModel.getAllAlbum().observe(viewLifecycleOwner){album ->
-                albumAdapter.differ.submitList(album)
-                updateUI(album)
+            albumViewModel.getAlbumsByProjectId(project.id).observe(viewLifecycleOwner) { albums ->
+                albumAdapter.differ.submitList(albums)
+                updateUI(albums)
             }
         }
+
     }
 
     private fun updateUI(album: List<Album>?) {
@@ -103,7 +108,6 @@ class ProjectFragment : Fragment(R.layout.fragment_project) {
         }
 
     }
-
 
 
     override fun onDestroy() {

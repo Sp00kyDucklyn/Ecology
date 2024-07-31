@@ -11,8 +11,9 @@ import com.cursokotlin.eco.HomeFragmentDirections
 import com.cursokotlin.eco.ProjectFragmentDirections
 import com.cursokotlin.eco.databinding.ItemAlbumBinding
 import com.cursokotlin.eco.model.Album
+import com.cursokotlin.eco.model.Project
 
-class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+class AlbumAdapter(private val project: Project): RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
     class AlbumViewHolder(val itemBinding: ItemAlbumBinding): RecyclerView.ViewHolder(itemBinding.root)
 
@@ -47,8 +48,9 @@ class AlbumAdapter: RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
         holder.itemBinding.albumTitle.text = currentAlbum.albumTitle
 
+
         holder.itemView.setOnClickListener{
-            val directions = ProjectFragmentDirections.actionProjectFragmentToAlbumFragment(currentAlbum)
+            val directions = ProjectFragmentDirections.actionProjectFragmentToAlbumFragment(currentAlbum, project)
             it.findNavController().navigate(directions)
         }
     }

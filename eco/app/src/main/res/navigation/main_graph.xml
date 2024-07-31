@@ -22,10 +22,6 @@
         <action
             android:id="@+id/action_homeFragment_to_projectFragment"
             app:destination="@id/projectFragment" />
-        <argument
-            android:name="projectName"
-            app:argType="string" />
-
     </fragment>
     <fragment
         android:id="@+id/etiquetesFragment"
@@ -101,6 +97,9 @@
         <argument
             android:name="album"
             app:argType="com.cursokotlin.eco.model.Album" />
+        <argument
+            android:name="project"
+            app:argType="com.cursokotlin.eco.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -116,7 +115,7 @@
             android:id="@+id/action_addAlbum_to_projectFragment"
             app:destination="@id/projectFragment" />
         <argument
-            android:name="album"
-            app:argType="com.cursokotlin.eco.model.Album" />
+            android:name="projectid"
+            app:argType="com.cursokotlin.eco.model.Project" />
     </fragment>
 </navigation>

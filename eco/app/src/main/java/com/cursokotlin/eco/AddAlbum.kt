@@ -13,6 +13,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.cursokotlin.eco.databinding.FragmentAddBinding
 import com.cursokotlin.eco.model.Album
 import com.cursokotlin.eco.model.Project
@@ -26,6 +27,8 @@ class AddAlbum : Fragment(R.layout.fragment_add_album), MenuProvider {
 
     private lateinit var albumViewModel: AlbumViewModel
     private lateinit var albumProjectView: View
+
+    private val args: AddAlbumArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +53,7 @@ class AddAlbum : Fragment(R.layout.fragment_add_album), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         albumViewModel = (activity as MainActivity).albumViewModel
+
         albumProjectView = view
     }
 
@@ -57,19 +61,21 @@ class AddAlbum : Fragment(R.layout.fragment_add_album), MenuProvider {
     private fun saveProject(view: View){
         val addAlbumTitle = binding.addNoteTitle.text.toString().trim()
         val coords = binding.addNoteDesc.text.toString().trim()
+        val projectId = args.projectid.id
 
-        if(addAlbumTitle.isNotEmpty()){
-            val album = Album(0,addAlbumTitle,coords)
-            albumViewModel.insertAlbum(album)
+            if(addAlbumTitle.isNotEmpty()){
+                val album = Album(0, projectId,addAlbumTitle,coords)
+                albumViewModel.insertAlbum(album)
 
-            Toast.makeText(albumProjectView.context, "Album Saved", Toast.LENGTH_SHORT).show()
-            view.findNavController().popBackStack(R.id.homeFragment, false)
+                Toast.makeText(albumProjectView.context, "Album Saved", Toast.LENGTH_SHORT).show()
+                view.findNavController().popBackStack(R.id.homeFragment, false)
 
-        }else{
+            }else{
 
-            Toast.makeText(albumProjectView.context, "Plese enter album title", Toast.LENGTH_SHORT).show()
+                Toast.makeText(albumProjectView.context, "Plese enter album title", Toast.LENGTH_SHORT).show()
 
-        }
+            }
+
 
     }
 

@@ -8,24 +8,22 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.cursokotlin.eco.model.Album
-
+import com.cursokotlin.eco.model.Picture
 
 @Dao
-interface AlbumDao {
+interface PictureDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAlbum(album: Album)
+    suspend fun insertPicture(picture: Picture)
 
     @Update
-    suspend fun updateAlbum(album: Album)
+    suspend fun updatePicture(picture: Picture)
 
     @Delete
-    suspend fun deleteAlbum(album: Album)
+    suspend fun deletePicture(picture: Picture)
 
-    @Query("SELECT * FROM ALBUMES ORDER BY id")
-    fun getAllAlbumes(): LiveData<List<Album>>
+    @Query("SELECT * FROM PICTURES ORDER BY id")
+    fun getAllPictures(): LiveData<List<Picture>>
 
-    @Query("SELECT * FROM albumes WHERE projectId = :projectId")
-    fun getAlbumsByProjectId(projectId: Int): LiveData<List<Album>>
 
 }

@@ -6,15 +6,17 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cursokotlin.eco.model.Album
 import com.cursokotlin.eco.model.Etiquete
+import com.cursokotlin.eco.model.Picture
 import com.cursokotlin.eco.model.Project
 
-@Database(entities = [Project::class, Album::class, Etiquete::class], version = 5)
+@Database(entities = [Project::class, Album::class, Etiquete::class, Picture::class], version = 5)
 abstract class DataBase: RoomDatabase() {
 
 
     abstract fun getProjectDao(): ProjectDao
     abstract fun getAlbumDao():AlbumDao
     abstract fun getEtiqueteDao():EtiqueteDao
+    abstract fun getPicturesDao(): PictureDao
 
     companion object{
         //Ayuda a que los cambios echos en un hilo, sean inmediatamente visibles en otros
@@ -37,7 +39,7 @@ abstract class DataBase: RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 DataBase::class.java,
-                name = "note_db"
+                name = "eco_db"
             ).build()
 
     }
