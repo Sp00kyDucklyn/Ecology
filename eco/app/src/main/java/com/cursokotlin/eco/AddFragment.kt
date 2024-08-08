@@ -13,6 +13,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.cursokotlin.eco.databinding.FragmentAddBinding
 import com.cursokotlin.eco.model.Project
 import com.cursokotlin.eco.viewmodel.ProjectViewModel
@@ -39,6 +40,10 @@ class AddFragment : Fragment(R.layout.fragment_add), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         addProjectBinding = FragmentAddBinding.inflate(inflater,container,false)
+        binding.photoBtn.setOnClickListener{
+            saveProject(addProjectView)
+            findNavController().navigateUp()
+        }
         return binding.root
     }
 

@@ -11,4 +11,5 @@
     <color name="brownNavButton">#97886B</color>
     <color name="greyPlaceHolder">#ACACAC</color>
     <color name="greySubtitle">#494949</color>
+    <color name="transparente">#00000001</color>
 </resources>

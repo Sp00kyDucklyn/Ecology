@@ -29,6 +29,8 @@ interface ProjectDao {
     fun searchProject(query: String?): LiveData<List<Project>>
 
 
+    @Query("SELECT projectTitle FROM projects WHERE id = :projectId")
+    suspend fun getProjectTitleById(projectId: Int): String?
 
 
 }

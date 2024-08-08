@@ -27,5 +27,6 @@ class ProjectViewModel(app: Application, private val projectRepository: ProjectR
     fun getAllProjects() = projectRepository.getAllProjects()
 
     fun searchProjects(query: String?) = projectRepository.serchProjects(query)
+    suspend  fun getProjectTitleById(projectId: Int) = projectRepository.getProjectTitleById(projectId)
 
 }

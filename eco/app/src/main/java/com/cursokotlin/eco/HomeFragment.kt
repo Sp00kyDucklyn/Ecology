@@ -31,7 +31,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
     private lateinit var projectViewModel: ProjectViewModel
     private lateinit var projectAdapter: ProjectAdapter
-    private lateinit var btnOpenCameraActivity: Button
 
 
 

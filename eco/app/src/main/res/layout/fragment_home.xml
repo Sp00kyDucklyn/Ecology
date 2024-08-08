@@ -63,9 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:iconifiedByDefault="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:queryHint="Buscar..."
             android:layout_marginLeft="30dp"
-            app:tint="@color/white"
+
             />
 
     </LinearLayout>
@@ -74,6 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/project"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="25sp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"

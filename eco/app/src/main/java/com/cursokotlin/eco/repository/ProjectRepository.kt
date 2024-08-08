@@ -11,5 +11,6 @@ class ProjectRepository(private val db: DataBase) {
 
     fun getAllProjects() = db.getProjectDao().getAllProjects()
     fun serchProjects(query: String?) = db.getProjectDao().searchProject(query)
+    suspend fun getProjectTitleById(projectId: Int) = db.getProjectDao().getProjectTitleById(projectId)
 
 }

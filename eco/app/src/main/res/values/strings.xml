@@ -15,4 +15,10 @@
     <string name="text">Aquí podrás ver todas las etiquetas que tienes para seleccionar :)</string>
     <string name="welcomeEtiquete">Bienvenido a las etiquetas!</string>
     <string name="albumTitle">Album</string>
+    <string-array name="cosas">
+        <item>Sepa1</item>
+        <item>Sepa2</item>
+        <item>Sepa3</item>
+
+    </string-array>
 </resources>

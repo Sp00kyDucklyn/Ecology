@@ -55,7 +55,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
+    implementation("androidx.exifinterface:exifinterface:1.3.6")
     // ROOM
     val roomVersion = "2.6.1"
     implementation ("androidx.room:room-runtime:$roomVersion")

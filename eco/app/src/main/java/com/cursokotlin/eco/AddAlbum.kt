@@ -13,6 +13,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cursokotlin.eco.databinding.FragmentAddBinding
 import com.cursokotlin.eco.model.Album
@@ -42,6 +43,11 @@ class AddAlbum : Fragment(R.layout.fragment_add_album), MenuProvider {
     ): View? {
         // Inflate the layout for this fragment
         addAlbumBinding = FragmentAddBinding.inflate(inflater,container,false)
+        binding.addNoteHeading.text ="Add Album"
+        binding.photoBtn.setOnClickListener {
+            saveProject(albumProjectView)
+            findNavController().navigateUp()
+        }
         return binding.root
     }
 
