@@ -41,9 +41,8 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
-        app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
- />
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -53,30 +52,103 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
+    <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintBottom_toTopOf="@id/btnAceptar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-        <Button
-            android:id="@+id/btnAceptar"
-            android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aceptar" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Aquí van los 5 botones para representar la barra de navegación -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="A" />
+
+                <Button
+                    android:id="@+id/buttonB"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="C" />
+
+                <Button
+                    android:id="@+id/buttonD"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="D" />
+
+                <Button
+                    android:id="@+id/buttonE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="E" />
+            </LinearLayout>
+
+            <!-- Texto que mostrará la selección -->
+            <TextView
+                android:id="@+id/textViewSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="diego"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <SeekBar
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="30"
+                android:padding="16dp" />
+
+            <!-- Otros elementos que quieras agregar -->
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Aceptar"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:gravity="center"
         android:layout_height="46dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+        tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

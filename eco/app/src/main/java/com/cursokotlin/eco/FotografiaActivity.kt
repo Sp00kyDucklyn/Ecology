@@ -15,8 +15,11 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.SeekBar
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -47,7 +50,12 @@ class FotografiaActivity : AppCompatActivity() {
     private lateinit var camaraLauncher: ActivityResultLauncher<Intent>
     private lateinit var projectName: String
     private lateinit var albumName: String
-
+    private lateinit var buttonA: Button
+    private lateinit var buttonB: Button
+    private lateinit var buttonC: Button
+    private lateinit var buttonD: Button
+    private lateinit var buttonE: Button
+    private lateinit var textViewSelection: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +66,18 @@ class FotografiaActivity : AppCompatActivity() {
         btnCamera = findViewById<Button>(R.id.btnCamara)
         btnVolver = findViewById<Button>(R.id.btnVolverMenu)
         btnAceptar = findViewById(R.id.btnAceptar)
-
+        buttonA = findViewById(R.id.buttonA)
+        buttonB = findViewById(R.id.buttonB)
+        buttonC = findViewById(R.id.buttonC)
+        buttonD = findViewById(R.id.buttonD)
+        buttonE = findViewById(R.id.buttonE)
+        textViewSelection = findViewById(R.id.textViewSelection)
+       
+        findViewById<SeekBar>(R.id.slider).apply {
+            max = 3 // Establecer el rango del SeekBar a 0-3
+            background = ProgressDrawable(this@FotografiaActivity) // Cambia YourActivityName por el nombre real
+        }
+        textViewValue.text = "0.0"
 
 
         projectName = intent.getStringExtra("PROJECT_NAME") ?: "DefaultProject"
@@ -99,6 +118,7 @@ class FotografiaActivity : AppCompatActivity() {
                 finish()
             }
         }
+
     }
     private fun saveImageWithTags(imageUri: Uri, tags: Map<String, String>) {
         try {

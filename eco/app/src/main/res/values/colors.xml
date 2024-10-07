@@ -12,4 +12,10 @@
     <color name="greyPlaceHolder">#ACACAC</color>
     <color name="greySubtitle">#494949</color>
     <color name="transparente">#00000001</color>
+    <color name="blue1">#669DE6</color>
+    <color name="green">#51b691</color>
+    <color name="lime">#acf86c</color>
+    <color name="yellow">#fbfc5f</color>
+    <color name="orange">#f5b257</color>
+    <color name="red">#f26674</color>
 </resources>
