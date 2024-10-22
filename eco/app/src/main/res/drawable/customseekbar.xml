@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/green"
+                android:centerColor="@color/yellow"
+                android:endColor="@color/red"
+                android:angle="0"/> <!-- Degradado horizontal -->
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+
+    <!-- Parte con progreso (lo que ya avanzaste) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@android:color/transparent" /> <!-- Parte avanzada es transparente -->
+                <corners android:radius="5dp" />
+            </shape>
+        </clip>
+    </item>
+
+    <!-- Parte intermedia cuando se avanza parcialmente (sin valor completo) -->
+    <item android:id="@android:id/secondaryProgress">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" /> <!-- Parte intermedia también transparente -->
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+</layer-list>

@@ -16,43 +16,39 @@
         android:textColor="#FF0000"
         android:gravity="left"
         android:paddingBottom="31dp"
-        android:background="?attr/selectableItemBackground"
-        />
+        android:background="?attr/selectableItemBackground" />
+
     <TextView
         android:id="@+id/imageNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:paddingBottom="8dp"
         android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold" />
 
-<ImageView
-android:id="@+id/imageView"
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:layout_weight="1"
-    android:scaleType="fitCenter"
-    tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Descripcion: "
         android:textColor="@android:color/white"
         android:textSize="28sp"
-        android:textStyle="bold"/>
-    <ScrollView
+        android:textStyle="bold" />
+
+
+
+    <TableLayout
+        android:id="@+id/metadataTableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp" />
 
-        <TextView
-            android:id="@+id/dialogDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"/>
-    </ScrollView>
 </LinearLayout>

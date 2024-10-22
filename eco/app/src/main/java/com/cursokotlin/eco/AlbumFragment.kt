@@ -13,10 +13,12 @@ import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.Toast
+import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.cursokotlin.eco.databinding.FragmentAlbumBinding
 import com.cursokotlin.eco.databinding.FragmentProjectBinding
 import com.cursokotlin.eco.model.Project
@@ -64,12 +66,11 @@ class AlbumFragment : Fragment() {
         val imageFiles = getImageFiles()
         val imageMargin = 8 // Margen en píxeles
         val numColumns = 3 // Número de imágenes por fila
-        // Obtener las dimensiones de la pantalla
-        val displayMetrics = context?.resources?.displayMetrics
-        val screenWidth = displayMetrics?.widthPixels ?: 1080 // Ancho de la pantalla en píxeles (valor por defecto en caso de error)
 
-        // Calcular el tamaño máximo de las imágenes
-        val imageSize = (screenWidth / numColumns) - (imageMargin * (numColumns + 1)) // -1 por márgenes
+        val displayMetrics = context?.resources?.displayMetrics
+        val screenWidth = displayMetrics?.widthPixels ?: 1080 // Ancho de la pantalla en píxeles
+
+        val imageSize = (screenWidth / numColumns) - (imageMargin * (numColumns + 1)) // Tamaño de imagen
 
         var row: TableRow? = null
         for (i in imageFiles.indices) {
@@ -81,32 +82,50 @@ class AlbumFragment : Fragment() {
             val imageView = ImageView(context)
             val imgFile = imageFiles[i]
 
-            if (imgFile.exists()) {
-                val bitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-                imageView.setImageBitmap(bitmap)
-            }
+            // Usar Glide para cargar la imagen de manera eficiente
+            Glide.with(this)
+                .load(imgFile) // Ruta del archivo de imagen
+                .override(imageSize, imageSize) // Ajusta el tamaño de la imagen
+                .centerCrop() // Recorta la imagen para llenar el ImageView
+                .into(imageView) // Carga la imagen en el ImageView
 
-            // Configura los parámetros del diseño de la imagen
+            // Configuración de diseño para el ImageView
             val params = TableRow.LayoutParams(
                 imageSize,
                 imageSize
             ).apply {
-                // Añade márgenes a cada imagen
                 setMargins(imageMargin, imageMargin, imageMargin, imageMargin)
             }
 
             imageView.layoutParams = params
             imageView.adjustViewBounds = true
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            val imageDescription = """#Arboles #Arbustos #Quemado=4 #Rojo #Carmen #Amor #Demi #Vida
-"""
+
+            val imageDescription = """"""  // Descripción de imagen (si es necesario)
             imageView.setOnClickListener {
-                ImageDialogFragment.newInstance(imgFile.absolutePath, imgFile.name,imageDescription)
-                    .show(childFragmentManager, "ImageDialog")
+                // Suponiendo que tienes un método para obtener metadatos de la imagen
+                val metadata = getMetadataForImage(imgFile) // Implementa esta función
+
+                ImageDialogFragment.newInstance(
+                    imgFile.absolutePath,
+                    imgFile.name,
+                    imageDescription,
+                    metadata // Pasa los metadatos aquí
+                ).show(childFragmentManager, "ImageDialog")
             }
 
             row?.addView(imageView)
         }
+    }
+
+    private fun getMetadataForImage(imgFile: File): Map<String, String> {
+        // Aquí puedes cargar los metadatos usando ExifInterface u otro método
+        val exif = ExifInterface(imgFile.absolutePath)
+        return mapOf(
+            "Tipo" to (exif.getAttribute(ExifInterface.TAG_USER_COMMENT) ?: "N/A"),
+            "Substrates" to (exif.getAttribute(ExifInterface.TAG_ARTIST) ?: "N/A"),
+            "Valor" to (exif.getAttribute(ExifInterface.TAG_IMAGE_DESCRIPTION) ?: "N/A")
+        )
     }
 
     private fun getImageFiles(): List<File> {

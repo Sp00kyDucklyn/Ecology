@@ -33,6 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Open Camera" />
+
+        <Button
+            android:id="@+id/btnGaleria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Open Galery" />
     </LinearLayout>
 
     <ImageView
@@ -108,24 +115,273 @@
                     android:layout_weight="1"
                     android:text="E" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/attributesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
+                <!-- Atributos para A -->
+                <LinearLayout
+                    android:id="@+id/attributesA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btnLitterFuelA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Litter/Light Fuel" />
+                    <Button
+                        android:id="@+id/btnDuffA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Duff" />
+                    <Button
+                        android:id="@+id/btnMediumFuelA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Medium Fuel" />
+                    <Button
+                        android:id="@+id/btnHeavyFuelA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Heavy Fuel" />
+                    <Button
+                        android:id="@+id/btnSoilRock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Soil y Rock Cover/Color" />
+                </LinearLayout>
+
+                <!-- Atributos para B -->
+                <LinearLayout
+                    android:id="@+id/attributesB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btnFoliageAlteredB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foliage Altered" />
+                    <Button
+                        android:id="@+id/btnFreqLivingB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Frequency % Living" />
+                    <Button
+                        android:id="@+id/btnColonizersB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Colonizers" />
+                    <Button
+                        android:id="@+id/btnSppCompB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spp. Comp. - Rel. Abund." />
+                </LinearLayout>
+
+                <!-- Atributos para C -->
+                <LinearLayout
+                    android:id="@+id/attributesC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btnFoliageAlteredC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foliage Altered" />
+                    <Button
+                        android:id="@+id/btnFreqLivingC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Frequency % Living" />
+                    <Button
+                        android:id="@+id/btnChangeCoverC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Change in Cover" />
+                    <Button
+                        android:id="@+id/btnSppCompC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spp. Comp. - Rel. Abund." />
+                </LinearLayout>
+
+                <!-- Atributos para D -->
+                <LinearLayout
+                    android:id="@+id/attributesD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btnGreenD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Green" />
+                    <Button
+                        android:id="@+id/btnBlackD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Black" />
+                    <Button
+                        android:id="@+id/btnBrownD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Brown" />
+                    <Button
+                        android:id="@+id/btnCanopyMortalityD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Canopy Mortality" />
+                </LinearLayout>
+
+                <!-- Atributos para E -->
+                <LinearLayout
+                    android:id="@+id/attributesE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btnGreenE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Green" />
+                    <Button
+                        android:id="@+id/btnBlackE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Black" />
+                    <Button
+                        android:id="@+id/btnBrownE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Brown" />
+                    <Button
+                        android:id="@+id/btnCanopyMortalityE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="% Canopy Mortality" />
+                </LinearLayout>
+
+            </LinearLayout>
             <!-- Texto que mostrará la selección -->
+
             <TextView
                 android:id="@+id/textViewSelection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="diego"
+                android:gravity="center"
                 android:padding="16dp"
-                android:textSize="16sp"
-                android:gravity="center" />
+                android:text="Selecciona un Sustracto"
+                android:textSize="16sp" />
 
             <SeekBar
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/customseekbar"
+
                 android:max="30"
                 android:padding="16dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <!-- Flecha y texto para Low -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_marginStart="16dp">
+
+                    <ImageView
+                        android:id="@+id/arrowLow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_arrow_drop_up_24" />
+
+
+                    <TextView
+                        android:id="@+id/textViewLow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Low"
+                        android:gravity="center"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Flecha y texto para Moderate -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/arrowModerate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_arrow_drop_up_24" />
+
+
+                    <TextView
+                        android:id="@+id/textViewModerate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Moderate"
+                        android:gravity="center"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Flecha y texto para High -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="end"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView
+                        android:id="@+id/arrowHigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_arrow_drop_up_24" />
+
+                    <TextView
+                        android:id="@+id/textViewHigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="High"
+                        android:gravity="center"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textViewSeekBarValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.5"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:gravity="center" />
             <!-- Otros elementos que quieras agregar -->
         </LinearLayout>
     </ScrollView>

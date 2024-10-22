@@ -18,4 +18,6 @@
     <color name="yellow">#fbfc5f</color>
     <color name="orange">#f5b257</color>
     <color name="red">#f26674</color>
+    <color name="default_button_color">#FF000000</color> <!-- Color por defecto -->
+    <color name="selected_button_color">#FFCC00</color> <!-- Color seleccionado -->
 </resources>
